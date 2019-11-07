@@ -1,4 +1,4 @@
-package prueba_getter_setter_objetoleerfichero;
+package menu_de_opciones_para_datos_de_un_fichero;
 
 public class Coche {
 	private String matricula;
