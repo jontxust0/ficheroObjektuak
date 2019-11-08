@@ -57,7 +57,7 @@ public class Main {
 		do {
 				System.out.println("");
 				System.out.println("-- MENU --");
-				System.out.println("1. Añadir coche");
+				System.out.println("1. AÃ±adir coche");
 				System.out.println("2. Cambiar matricula");
 				System.out.println("3. Trucar el motor de un coche");
 				System.out.println("4. Borrar coche de la lista");
@@ -89,6 +89,8 @@ public class Main {
 						
 						break;
 					 	case 6:
+							 //listarCoches(cochesNuevos);
+							 //goiko metodoan sartu tartekoa
 					 		Iterator<Coche> i = cochesnuevos.iterator();
 
 							while (i.hasNext()) {
@@ -96,6 +98,7 @@ public class Main {
 								System.out.println("Matricula: "+ c.getMatricula() + " - Marca: " + c.getPotencia() 
 												+ " - Pasajeros: " + c.getMarca() + " - Ruedas: " + c.getRuedas());
 							}
+							 //metodo baten sartu
 						break;
 					 	default:
 						break;
