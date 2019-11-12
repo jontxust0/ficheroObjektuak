@@ -75,7 +75,7 @@ public class Main {
 						
 						break;
 					 	case 5:
-						listarUnCoche(cochesnuevos, c);
+					 		mostrarUnCoche(cochesnuevos, c);
 						break;
 					 	case 6:
 							 //listarCoches(cochesNuevos);
@@ -100,7 +100,7 @@ public class Main {
 		
 	}
 	
-	public static void listarUnCoche(ArrayList cochesnuevos, Coche c) {
+	public static void mostrarUnCoche(ArrayList cochesnuevos, Coche c) {
 		String cocheACambiar;
 		System.out.println("Escribe la matricula del coche del cual quieres saber sus caracteristicas");
 		cocheACambiar = new Scanner(System.in).nextLine();
