@@ -86,7 +86,7 @@ public class Main {
 						
 						break;
 					 	case 5:
-						
+						listarUnCoche(cochesnuevos, c);
 						break;
 					 	case 6:
 							 //listarCoches(cochesNuevos);
@@ -106,25 +106,25 @@ public class Main {
 		
 		
 		// recorrer el array e guardarlo en coches.txt
-		file = new File("datos/coches.txt");
- 		
-		try {
-			PrintWriter pw= new PrintWriter(file);
-			
-			Iterator<Coche> i = cochesnuevos.iterator();
-			
+		
+		
+		
+	}
+	
+	public static void listarUnCoche(ArrayList cochesnuevos, Coche c) {
+		String cocheACambiar;
+		System.out.println("Escribe la matricula del coche del cual quieres saber sus caracteristicas");
+		cocheACambiar = new Scanner(System.in).nextLine();
+		Iterator<Coche> i = cochesnuevos.iterator();
 			while (i.hasNext()) {
 				c = i.next();
-				pw.println(c.getMatricula() + ";" + c.getPotencia() 
-				+ ";" + c.getMarca() + ";" + c.getRuedas());
-
+				if(cocheACambiar.equals(c.getMatricula())) {
+					System.out.println("Matricula: "+ c.getMatricula() + " - Marca: " + c.getPotencia() 
+					+ " - Pasajeros: " + c.getMarca() + " - Ruedas: " + c.getRuedas());
+				}	
 			}
-			pw.close();
 			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
+			
 		
 	}
 	public static void listarCoches(ArrayList cochesnuevos, Coche c) {
