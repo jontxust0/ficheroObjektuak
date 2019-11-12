@@ -46,13 +46,13 @@ public class Main {
 		do {
 				System.out.println("");
 				System.out.println("-- MENU --");
-				System.out.println("1. Anadir coche");
-				System.out.println("2. Cambiar matricula");
-				System.out.println("3. Trucar el motor de un coche");
-				System.out.println("4. Borrar coche de la lista");
+				//System.out.println("1. Anadir coche");
+				//System.out.println("2. Cambiar matricula");
+				//System.out.println("3. Trucar el motor de un coche");
+				//System.out.println("4. Borrar coche de la lista");
 				System.out.println("5. Ver los datos de un coche");
 				System.out.println("6. Ver la lista de todos los coches que hay");
-				System.out.println("7. Terminar consulta");
+				//System.out.println("7. Terminar consulta");
 				System.out.println("");
 				System.out.println("Elige una de las opciones del menu de arriba:");
 				opcion = new Scanner(System.in).nextInt();
