@@ -41,17 +41,6 @@ public class Main {
 		}
 
 		
-		//menua eta aukerak
-//		do {
-			//1 kotxea gehitu
-			//2 martikula aldatu
-			//3 motorra trukatu
-			//4 kotxea ezabatu
-			//5 kotxearen datuak ikusi
-			//6 kotxeak zerrendatu
-			//7 amaitu programa
-//		}while();
-		
 		int opcion;
 		
 		do {
