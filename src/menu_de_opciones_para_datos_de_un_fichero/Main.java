@@ -104,9 +104,44 @@ public class Main {
 		
 		
 	}
-	public static void anadirUnCoche(ArrayList cochesnuevos, Coche c) {
-		
+	public static void cambiarMotor(ArrayList cochesnuevos, Coche c) {
+			Iterator<Coche> i = cochesnuevos.iterator();
+			String matricula;
+			String motorNuevo;
+			System.out.println("Di la matricula del coche al que quieres cambiar el motor");
+			matricula = new Scanner(System.in).nextLine();
+			while (i.hasNext()) {
+				c = i.next();
+				if(matricula.equals(c.getMatricula())) {
+					System.out.println("Que potencia le vas a dar?");
+					motorNuevo = new Scanner(System.in).nextLine();
+					c.setPotencia(motorNuevo);
+					File file = new File("datos/coches.txt");
+
+					i = cochesnuevos.iterator();
+
+					
+					try {
+						//fitxategi baten idatzi ahal izateko behar diren objectuak
+						FileWriter fw;
+						fw = new FileWriter(file);
+						PrintWriter pw = new PrintWriter(fw);
+						
+						while (i.hasNext()) {
+							c = i.next();
+							pw.println(c.getMatricula()+";"+c.getPotencia()+";"+c.getMarca()+";"+c.getRuedas());
+
+						}
+						pw.close();
+						fw.close();
+						
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 	}
+	
 	
 	public static void borrarUnCoche(ArrayList cochesnuevos, Coche c){
 		Iterator<Coche> i = cochesnuevos.iterator();
