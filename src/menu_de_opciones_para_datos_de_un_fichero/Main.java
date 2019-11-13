@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-
+		
 		File file = new File("datos/coches.txt");
 		ArrayList<Coche> cochesnuevos = new ArrayList<Coche>();
 		Scanner scan;
@@ -77,7 +77,7 @@ public class Main {
 					 		//2 martikula aldatu
 						break;
 					 	case 3:
-					 		//3 motorra trukatu
+					 		cambiarMotor(cochesnuevos, c);
 						break;
 					 	case 4:
 					 		borrarUnCoche(cochesnuevos, c);
@@ -140,6 +140,7 @@ public class Main {
 					}
 				}
 			}
+			
 	}
 	
 	
