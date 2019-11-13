@@ -1,2 +1,2 @@
 29060pw;500 cv;Ferrari;4
-12345pw;800cv;fiat;4;
+12345pw600cv;fiat;4

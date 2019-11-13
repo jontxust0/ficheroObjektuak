@@ -43,16 +43,11 @@ public class Main {
 		}
 
 		
-		//menua eta aukerak
-//		do {
-			//1 kotxea gehitu
-			//2 martikula aldatu
-			//3 motorra trukatu
-			//4 kotxea ezabatu
-			//5 kotxearen datuak ikusi
-			//6 kotxeak zerrendatu
-			//7 amaitu programa
-//		}while();
+
+			
+			
+			
+			
 		
 		int opcion;
 		
@@ -75,14 +70,14 @@ public class Main {
 				} else {
 					 switch (opcion) {
 					 	case 1:
-					 		
+					 		//1 kotxea gehitu
 							
 						break;
 					 	case 2:
-						
+					 		//2 martikula aldatu
 						break;
 					 	case 3:
-						
+					 		//3 motorra trukatu
 						break;
 					 	case 4:
 					 		borrarUnCoche(cochesnuevos, c);
@@ -109,6 +104,10 @@ public class Main {
 		
 		
 	}
+	public static void anadirUnCoche(ArrayList cochesnuevos, Coche c) {
+		
+	}
+	
 	public static void borrarUnCoche(ArrayList cochesnuevos, Coche c){
 		Iterator<Coche> i = cochesnuevos.iterator();
 		String cocheABorrar;
@@ -118,7 +117,7 @@ public class Main {
 		while (i.hasNext()) {
 			c = i.next();
 			if(cocheABorrar.equals(c.getMatricula())) {
-				cochesnuevos.remove(1);
+				cochesnuevos.remove(c);
 				System.out.println("Se ha borrado el coche con la matricula " + c.getMatricula());
 				
 				File file = new File("datos/coches.txt");
