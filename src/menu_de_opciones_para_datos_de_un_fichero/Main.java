@@ -71,20 +71,24 @@ public class Main {
 					 switch (opcion) {
 					 	case 1:
 					 		//1 kotxea gehitu
-							
 						break;
+						
 					 	case 2:
-					 		//2 martikula aldatu
+					 		cambiarMatricula(cochesnuevos, c);
 						break;
+						
 					 	case 3:
 					 		cambiarMotor(cochesnuevos, c);
 						break;
+						
 					 	case 4:
 					 		borrarUnCoche(cochesnuevos, c);
 						break;
+						
 					 	case 5:
 					 		mostrarUnCoche(cochesnuevos, c);
 						break;
+						
 					 	case 6:
 					 		listarCoches(cochesnuevos, c);
 						break;
@@ -96,14 +100,48 @@ public class Main {
 			
 		} while (opcion != 7);
 		System.out.println("FIN");
-		
-		
-		
 		// recorrer el array e guardarlo en coches.txt
-		
-		
-		
 	}
+	
+	public static void cambiarMatricula(ArrayList cochesnuevos, Coche c) {
+		Iterator<Coche> i = cochesnuevos.iterator();
+		String matricula;
+		String matriculaNueva;
+		System.out.println("Di la matricula del coche, para cambiar su numero de matricula");
+		matricula = new Scanner(System.in).nextLine();
+		while (i.hasNext()) {
+			c = i.next();
+			if(matricula.equals(c.getMatricula())) {
+				System.out.println("Cual sera su nuevo numero de matricula?");
+				matriculaNueva = new Scanner(System.in).nextLine();
+				c.setMatricula(matriculaNueva);
+				File file = new File("datos/coches.txt");
+
+				i = cochesnuevos.iterator();
+
+				
+				try {
+					//fitxategi baten idatzi ahal izateko behar diren objectuak
+					FileWriter fw;
+					fw = new FileWriter(file);
+					PrintWriter pw = new PrintWriter(fw);
+					
+					while (i.hasNext()) {
+						c = i.next();
+						pw.println(c.getMatricula()+";"+c.getPotencia()+";"+c.getMarca()+";"+c.getRuedas());
+
+					}
+					pw.close();
+					fw.close();
+					
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+}
+
 	public static void cambiarMotor(ArrayList cochesnuevos, Coche c) {
 			Iterator<Coche> i = cochesnuevos.iterator();
 			String matricula;
