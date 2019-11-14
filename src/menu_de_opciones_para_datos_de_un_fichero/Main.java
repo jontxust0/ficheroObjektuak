@@ -97,8 +97,7 @@ public class Main {
 		// recorrer el array e guardarlo en coches.txt
 	}
 	
-<<<<<<< HEAD
-=======
+
 	public static void cambiarMatricula(ArrayList cochesnuevos, Coche c) {
 		Iterator<Coche> i = cochesnuevos.iterator();
 		String matricula;
@@ -215,7 +214,7 @@ public class Main {
 			}
 		}
 	}
->>>>>>> branch 'master' of https://github.com/jontxust0/ficheroObjektuak.git
+
 	public static void mostrarUnCoche(ArrayList cochesnuevos, Coche c) {
 		String cocheACambiar;
 		System.out.println("Escribe la matricula del coche del cual quieres saber sus caracteristicas");
