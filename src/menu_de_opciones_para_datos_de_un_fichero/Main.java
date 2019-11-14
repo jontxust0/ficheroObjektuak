@@ -9,12 +9,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
-
-
 public class Main {
 
 	public static void main(String[] args) {
-		
+
 		File file = new File("datos/coches.txt");
 		ArrayList<Coche> cochesnuevos = new ArrayList<Coche>();
 		Scanner scan;
@@ -29,7 +27,7 @@ public class Main {
 			while (scan.hasNext()) {
 				linea = scan.nextLine();
 				partesLinea = linea.split(";");
-				
+
 				c = new Coche();
 				c.setMatricula(partesLinea[0]);
 				c.setPotencia((partesLinea[1]));
@@ -42,61 +40,80 @@ public class Main {
 			e.printStackTrace();
 		}
 
-		
 		int opcion;
-		
+
 		do {
+			System.out.println("");
+			System.out.println("-- MENU --");
+			System.out.println("1. Anadir coche");
+			// System.out.println("2. Cambiar matricula");
+			// System.out.println("3. Trucar el motor de un coche");
+			// System.out.println("4. Borrar coche de la lista");
+			System.out.println("5. Ver los datos de un coche");
+			System.out.println("6. Ver la lista de todos los coches que hay");
+			// System.out.println("7. Terminar consulta");
+			System.out.println("");
+			System.out.println("Elige una de las opciones del menu de arriba:");
+			opcion = new Scanner(System.in).nextInt();
+			if (opcion < 1 || opcion > 7) {
+				System.out.println("OPCION INVALIDA, prueba de nuevo");
 				System.out.println("");
-				System.out.println("-- MENU --");
-				//System.out.println("1. Anadir coche");
-				//System.out.println("2. Cambiar matricula");
-				//System.out.println("3. Trucar el motor de un coche");
-				//System.out.println("4. Borrar coche de la lista");
-				System.out.println("5. Ver los datos de un coche");
-				System.out.println("6. Ver la lista de todos los coches que hay");
-				//System.out.println("7. Terminar consulta");
-				System.out.println("");
-				System.out.println("Elige una de las opciones del menu de arriba:");
-				opcion = new Scanner(System.in).nextInt();
-				if(opcion < 1 || opcion > 7) {
-					System.out.println("OPCION INVALIDA, prueba de nuevo");
-					System.out.println("");
-				} else {
-					 switch (opcion) {
-					 	case 1:
-					 		//1 kotxea gehitu
-						break;
-						
-					 	case 2:
-					 		cambiarMatricula(cochesnuevos, c);
-						break;
-						
-					 	case 3:
-					 		cambiarMotor(cochesnuevos, c);
-						break;
-						
-					 	case 4:
-					 		borrarUnCoche(cochesnuevos, c);
-						break;
-						
-					 	case 5:
-					 		mostrarUnCoche(cochesnuevos, c);
-						break;
-						
-					 	case 6:
-					 		listarCoches(cochesnuevos, c);
-						break;
-					 	default:
-						break;
-					}
+			} else {
+				switch (opcion) {
+				case 1:
+					aniadirCoche(cochesnuevos);
+					break;
+
+				case 2:
+					cambiarMatricula(cochesnuevos, c);
+					break;
+
+				case 3:
+					cambiarMotor(cochesnuevos, c);
+					break;
+
+				case 4:
+					borrarUnCoche(cochesnuevos, c);
+					break;
+
+				case 5:
+					mostrarUnCoche(cochesnuevos, c);
+					break;
+
+				case 6:
+					listarCoches(cochesnuevos, c);
+					break;
+				default:
+
+					break;
 				}
-				
-			
+			}
+
 		} while (opcion != 7);
 		System.out.println("FIN");
-		// recorrer el array e guardarlo en coches.txt
+
+		// TODO recorrer el array e guardarlo en coches.txt
+
 	}
-	
+
+	private static void aniadirCoche(ArrayList<Coche> cochesnuevos) {
+		Scanner scan = new Scanner(System.in);
+		Coche c = new Coche();
+
+		System.out.println("Introduce la matricula del coche XXXX XXX");
+		c.setMatricula(scan.nextLine());
+
+		System.out.println("Introduce la pontencia del motor del coche");
+		c.setPotencia(scan.nextLine());
+
+		System.out.println("Introduce la marca y modelo del coche");
+		c.setMarca(scan.nextLine());
+
+		System.out.println("Introduce el numero de ruedas");
+		c.setRuedas(Integer.parseInt(scan.nextLine()));
+
+		cochesnuevos.add(c);
+	}
 
 	public static void cambiarMatricula(ArrayList cochesnuevos, Coche c) {
 		Iterator<Coche> i = cochesnuevos.iterator();
@@ -106,7 +123,7 @@ public class Main {
 		matricula = new Scanner(System.in).nextLine();
 		while (i.hasNext()) {
 			c = i.next();
-			if(matricula.equals(c.getMatricula())) {
+			if (matricula.equals(c.getMatricula())) {
 				System.out.println("Cual sera su nuevo numero de matricula?");
 				matriculaNueva = new Scanner(System.in).nextLine();
 				c.setMatricula(matriculaNueva);
@@ -114,100 +131,96 @@ public class Main {
 
 				i = cochesnuevos.iterator();
 
-				
 				try {
-					//fitxategi baten idatzi ahal izateko behar diren objectuak
+					// fitxategi baten idatzi ahal izateko behar diren objectuak
 					FileWriter fw;
 					fw = new FileWriter(file);
 					PrintWriter pw = new PrintWriter(fw);
-					
+
 					while (i.hasNext()) {
 						c = i.next();
-						pw.println(c.getMatricula()+";"+c.getPotencia()+";"+c.getMarca()+";"+c.getRuedas());
+						pw.println(c.getMatricula() + ";" + c.getPotencia() + ";" + c.getMarca() + ";" + c.getRuedas());
 
 					}
 					pw.close();
 					fw.close();
-					
+
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
 		}
-		
-}
+
+	}
 
 	public static void cambiarMotor(ArrayList cochesnuevos, Coche c) {
-			Iterator<Coche> i = cochesnuevos.iterator();
-			String matricula;
-			String motorNuevo;
-			System.out.println("Di la matricula del coche al que quieres cambiar el motor");
-			matricula = new Scanner(System.in).nextLine();
-			while (i.hasNext()) {
-				c = i.next();
-				if(matricula.equals(c.getMatricula())) {
-					System.out.println("Que potencia le vas a dar?");
-					motorNuevo = new Scanner(System.in).nextLine();
-					c.setPotencia(motorNuevo);
-					File file = new File("datos/coches.txt");
-
-					i = cochesnuevos.iterator();
-
-					
-					try {
-						//fitxategi baten idatzi ahal izateko behar diren objectuak
-						FileWriter fw;
-						fw = new FileWriter(file);
-						PrintWriter pw = new PrintWriter(fw);
-						
-						while (i.hasNext()) {
-							c = i.next();
-							pw.println(c.getMatricula()+";"+c.getPotencia()+";"+c.getMarca()+";"+c.getRuedas());
-
-						}
-						pw.close();
-						fw.close();
-						
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			
-	}
-	
-	
-	public static void borrarUnCoche(ArrayList cochesnuevos, Coche c){
 		Iterator<Coche> i = cochesnuevos.iterator();
-		String cocheABorrar;
-		System.out.println("Escribe la matricula del coche que quieres eliminar");
-		cocheABorrar = new Scanner(System.in).nextLine();
-		
+		String matricula;
+		String motorNuevo;
+		System.out.println("Di la matricula del coche al que quieres cambiar el motor");
+		matricula = new Scanner(System.in).nextLine();
 		while (i.hasNext()) {
 			c = i.next();
-			if(cocheABorrar.equals(c.getMatricula())) {
-				cochesnuevos.remove(c);
-				System.out.println("Se ha borrado el coche con la matricula " + c.getMatricula());
-				
+			if (matricula.equals(c.getMatricula())) {
+				System.out.println("Que potencia le vas a dar?");
+				motorNuevo = new Scanner(System.in).nextLine();
+				c.setPotencia(motorNuevo);
 				File file = new File("datos/coches.txt");
 
 				i = cochesnuevos.iterator();
 
-				
 				try {
-					//fitxategi baten idatzi ahal izateko behar diren objectuak
+					// fitxategi baten idatzi ahal izateko behar diren objectuak
 					FileWriter fw;
 					fw = new FileWriter(file);
 					PrintWriter pw = new PrintWriter(fw);
-					
+
 					while (i.hasNext()) {
 						c = i.next();
-						pw.println(c.getMatricula()+";"+c.getPotencia()+";"+c.getMarca()+";"+c.getRuedas());
+						pw.println(c.getMatricula() + ";" + c.getPotencia() + ";" + c.getMarca() + ";" + c.getRuedas());
 
 					}
 					pw.close();
 					fw.close();
-					
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
+
+	public static void borrarUnCoche(ArrayList cochesnuevos, Coche c) {
+		Iterator<Coche> i = cochesnuevos.iterator();
+		String cocheABorrar;
+		System.out.println("Escribe la matricula del coche que quieres eliminar");
+		cocheABorrar = new Scanner(System.in).nextLine();
+
+		while (i.hasNext()) {
+			c = i.next();
+			if (cocheABorrar.equals(c.getMatricula())) {
+				cochesnuevos.remove(c);
+				System.out.println("Se ha borrado el coche con la matricula " + c.getMatricula());
+
+				File file = new File("datos/coches.txt");
+
+				i = cochesnuevos.iterator();
+
+				try {
+					// fitxategi baten idatzi ahal izateko behar diren objectuak
+					FileWriter fw;
+					fw = new FileWriter(file);
+					PrintWriter pw = new PrintWriter(fw);
+
+					while (i.hasNext()) {
+						c = i.next();
+						pw.println(c.getMatricula() + ";" + c.getPotencia() + ";" + c.getMarca() + ";" + c.getRuedas());
+
+					}
+					pw.close();
+					fw.close();
+
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -220,24 +233,23 @@ public class Main {
 		System.out.println("Escribe la matricula del coche del cual quieres saber sus caracteristicas");
 		cocheACambiar = new Scanner(System.in).nextLine();
 		Iterator<Coche> i = cochesnuevos.iterator();
-			while (i.hasNext()) {
-				c = i.next();
-				if(cocheACambiar.equals(c.getMatricula())) {
-					System.out.println("Matricula: "+ c.getMatricula() + " - Potencia: " + c.getPotencia() 
-					+ " - Marca: " + c.getMarca() + " - Ruedas: " + c.getRuedas());
-				}	
+		while (i.hasNext()) {
+			c = i.next();
+			if (cocheACambiar.equals(c.getMatricula())) {
+				System.out.println("Matricula: " + c.getMatricula() + " - Potencia: " + c.getPotencia() + " - Marca: "
+						+ c.getMarca() + " - Ruedas: " + c.getRuedas());
 			}
-			
-			
-		
+		}
+
 	}
+
 	public static void listarCoches(ArrayList cochesnuevos, Coche c) {
 		Iterator<Coche> i = cochesnuevos.iterator();
 
 		while (i.hasNext()) {
 			c = i.next();
-			System.out.println("Matricula: "+ c.getMatricula() + " - Potencia: " + c.getPotencia() 
-							+ " - Marca: " + c.getMarca() + " - Ruedas: " + c.getRuedas());
+			System.out.println("Matricula: " + c.getMatricula() + " - Potencia: " + c.getPotencia() + " - Marca: "
+					+ c.getMarca() + " - Ruedas: " + c.getRuedas());
 		}
 	}
 }
