@@ -43,15 +43,6 @@ public class Main {
 		}
 
 		
-<<<<<<< HEAD
-=======
-
-			
-			
-			
-			
-		
->>>>>>> branch 'master' of https://github.com/jontxust0/ficheroObjektuak.git
 		int opcion;
 		
 		do {
