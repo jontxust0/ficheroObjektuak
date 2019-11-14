@@ -2,6 +2,8 @@ package menu_de_opciones_para_datos_de_un_fichero;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,7 +14,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-
+		
 		File file = new File("datos/coches.txt");
 		ArrayList<Coche> cochesnuevos = new ArrayList<Coche>();
 		Scanner scan;
@@ -41,6 +43,15 @@ public class Main {
 		}
 
 		
+<<<<<<< HEAD
+=======
+
+			
+			
+			
+			
+		
+>>>>>>> branch 'master' of https://github.com/jontxust0/ficheroObjektuak.git
 		int opcion;
 		
 		do {
@@ -62,26 +73,27 @@ public class Main {
 				} else {
 					 switch (opcion) {
 					 	case 1:
-					 		
-							
+					 		//1 kotxea gehitu
 						break;
+						
 					 	case 2:
-						
+					 		cambiarMatricula(cochesnuevos, c);
 						break;
+						
 					 	case 3:
-						
+					 		cambiarMotor(cochesnuevos, c);
 						break;
+						
 					 	case 4:
-						
+					 		borrarUnCoche(cochesnuevos, c);
 						break;
+						
 					 	case 5:
 					 		mostrarUnCoche(cochesnuevos, c);
 						break;
+						
 					 	case 6:
-							 //listarCoches(cochesNuevos);
-							 //goiko metodoan sartu tartekoa
 					 		listarCoches(cochesnuevos, c);
-							 //metodo baten sartu
 						break;
 					 	default:
 						break;
@@ -91,15 +103,128 @@ public class Main {
 			
 		} while (opcion != 7);
 		System.out.println("FIN");
-		
-		
-		
 		// recorrer el array e guardarlo en coches.txt
-		
-		
-		
 	}
 	
+<<<<<<< HEAD
+=======
+	public static void cambiarMatricula(ArrayList cochesnuevos, Coche c) {
+		Iterator<Coche> i = cochesnuevos.iterator();
+		String matricula;
+		String matriculaNueva;
+		System.out.println("Di la matricula del coche, para cambiar su numero de matricula");
+		matricula = new Scanner(System.in).nextLine();
+		while (i.hasNext()) {
+			c = i.next();
+			if(matricula.equals(c.getMatricula())) {
+				System.out.println("Cual sera su nuevo numero de matricula?");
+				matriculaNueva = new Scanner(System.in).nextLine();
+				c.setMatricula(matriculaNueva);
+				File file = new File("datos/coches.txt");
+
+				i = cochesnuevos.iterator();
+
+				
+				try {
+					//fitxategi baten idatzi ahal izateko behar diren objectuak
+					FileWriter fw;
+					fw = new FileWriter(file);
+					PrintWriter pw = new PrintWriter(fw);
+					
+					while (i.hasNext()) {
+						c = i.next();
+						pw.println(c.getMatricula()+";"+c.getPotencia()+";"+c.getMarca()+";"+c.getRuedas());
+
+					}
+					pw.close();
+					fw.close();
+					
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+}
+
+	public static void cambiarMotor(ArrayList cochesnuevos, Coche c) {
+			Iterator<Coche> i = cochesnuevos.iterator();
+			String matricula;
+			String motorNuevo;
+			System.out.println("Di la matricula del coche al que quieres cambiar el motor");
+			matricula = new Scanner(System.in).nextLine();
+			while (i.hasNext()) {
+				c = i.next();
+				if(matricula.equals(c.getMatricula())) {
+					System.out.println("Que potencia le vas a dar?");
+					motorNuevo = new Scanner(System.in).nextLine();
+					c.setPotencia(motorNuevo);
+					File file = new File("datos/coches.txt");
+
+					i = cochesnuevos.iterator();
+
+					
+					try {
+						//fitxategi baten idatzi ahal izateko behar diren objectuak
+						FileWriter fw;
+						fw = new FileWriter(file);
+						PrintWriter pw = new PrintWriter(fw);
+						
+						while (i.hasNext()) {
+							c = i.next();
+							pw.println(c.getMatricula()+";"+c.getPotencia()+";"+c.getMarca()+";"+c.getRuedas());
+
+						}
+						pw.close();
+						fw.close();
+						
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+	}
+	
+	
+	public static void borrarUnCoche(ArrayList cochesnuevos, Coche c){
+		Iterator<Coche> i = cochesnuevos.iterator();
+		String cocheABorrar;
+		System.out.println("Escribe la matricula del coche que quieres eliminar");
+		cocheABorrar = new Scanner(System.in).nextLine();
+		
+		while (i.hasNext()) {
+			c = i.next();
+			if(cocheABorrar.equals(c.getMatricula())) {
+				cochesnuevos.remove(c);
+				System.out.println("Se ha borrado el coche con la matricula " + c.getMatricula());
+				
+				File file = new File("datos/coches.txt");
+
+				i = cochesnuevos.iterator();
+
+				
+				try {
+					//fitxategi baten idatzi ahal izateko behar diren objectuak
+					FileWriter fw;
+					fw = new FileWriter(file);
+					PrintWriter pw = new PrintWriter(fw);
+					
+					while (i.hasNext()) {
+						c = i.next();
+						pw.println(c.getMatricula()+";"+c.getPotencia()+";"+c.getMarca()+";"+c.getRuedas());
+
+					}
+					pw.close();
+					fw.close();
+					
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+>>>>>>> branch 'master' of https://github.com/jontxust0/ficheroObjektuak.git
 	public static void mostrarUnCoche(ArrayList cochesnuevos, Coche c) {
 		String cocheACambiar;
 		System.out.println("Escribe la matricula del coche del cual quieres saber sus caracteristicas");
@@ -108,8 +233,8 @@ public class Main {
 			while (i.hasNext()) {
 				c = i.next();
 				if(cocheACambiar.equals(c.getMatricula())) {
-					System.out.println("Matricula: "+ c.getMatricula() + " - Marca: " + c.getPotencia() 
-					+ " - Pasajeros: " + c.getMarca() + " - Ruedas: " + c.getRuedas());
+					System.out.println("Matricula: "+ c.getMatricula() + " - Potencia: " + c.getPotencia() 
+					+ " - Marca: " + c.getMarca() + " - Ruedas: " + c.getRuedas());
 				}	
 			}
 			
@@ -121,8 +246,8 @@ public class Main {
 
 		while (i.hasNext()) {
 			c = i.next();
-			System.out.println("Matricula: "+ c.getMatricula() + " - Marca: " + c.getPotencia() 
-							+ " - Pasajeros: " + c.getMarca() + " - Ruedas: " + c.getRuedas());
+			System.out.println("Matricula: "+ c.getMatricula() + " - Potencia: " + c.getPotencia() 
+							+ " - Marca: " + c.getMarca() + " - Ruedas: " + c.getRuedas());
 		}
 	}
 }
