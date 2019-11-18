@@ -72,6 +72,7 @@ public class Main {
 
 				case 4:
 					borrarUnCoche(cochesnuevos, c);
+					guardar(cochesnuevos);
 					break;
 
 				case 5:
@@ -85,7 +86,7 @@ public class Main {
 					System.out.println("Saliendo..");
 					break;
 				default:
-					System.out.println("PCION INCORRECTA");
+					System.out.println("OPCION INCORRECTA");
 					
 					break;
 				}
@@ -206,30 +207,10 @@ public class Main {
 			if (cocheABorrar.equals(c.getMatricula())) {
 				cochesnuevos.remove(c);
 				System.out.println("Se ha borrado el coche con la matricula " + c.getMatricula());
-
-				File file = new File("datos/coches.txt");
-
-				i = cochesnuevos.iterator();
-
-				try {
-					// fitxategi baten idatzi ahal izateko behar diren objectuak
-					FileWriter fw;
-					fw = new FileWriter(file);
-					PrintWriter pw = new PrintWriter(fw);
-
-					while (i.hasNext()) {
-						c = i.next();
-						pw.println(c.getMatricula() + ";" + c.getPotencia() + ";" + c.getMarca() + ";" + c.getRuedas());
-
-					}
-					pw.close();
-					fw.close();
-
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				break;
 			}
 		}
+		
 	}
 
 	public static void mostrarUnCoche(ArrayList cochesnuevos, Coche c) {
@@ -254,6 +235,29 @@ public class Main {
 			c = i.next();
 			System.out.println("Matricula: " + c.getMatricula() + " - Potencia: " + c.getPotencia() + " - Marca: "
 					+ c.getMarca() + " - Ruedas: " + c.getRuedas());
+		}
+	}
+	
+	public static void guardar(ArrayList cochesnuevos) {
+		File f = new File("datos/coches.txt");
+		try {
+			PrintWriter pr = new PrintWriter(f);
+			
+			Iterator<Coche> i = cochesnuevos.iterator();
+			
+			Coche c = null;
+			
+			while(i.hasNext()) {
+				c = i.next();
+				
+				pr.println(c.getMatricula() + ";" + c.getPotencia() + ";" + c.getMarca() + ";" + c.getRuedas());
+				
+			}
+			pr.close();
+			
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 }
