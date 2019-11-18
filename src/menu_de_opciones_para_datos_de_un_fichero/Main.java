@@ -46,19 +46,16 @@ public class Main {
 			System.out.println("");
 			System.out.println("-- MENU --");
 			System.out.println("1. Anadir coche");
-			// System.out.println("2. Cambiar matricula");
-			// System.out.println("3. Trucar el motor de un coche");
-			// System.out.println("4. Borrar coche de la lista");
+			System.out.println("2. Cambiar matricula");
+			System.out.println("3. Trucar el motor de un coche");
+			System.out.println("4. Borrar coche de la lista");
 			System.out.println("5. Ver los datos de un coche");
 			System.out.println("6. Ver la lista de todos los coches que hay");
-			// System.out.println("7. Terminar consulta");
+			System.out.println("7. Terminar consulta");
 			System.out.println("");
 			System.out.println("Elige una de las opciones del menu de arriba:");
 			opcion = new Scanner(System.in).nextInt();
-			if (opcion < 1 || opcion > 7) {
-				System.out.println("OPCION INVALIDA, prueba de nuevo");
-				System.out.println("");
-			} else {
+			
 				switch (opcion) {
 				case 1:
 					aniadirCoche(cochesnuevos);
@@ -66,6 +63,7 @@ public class Main {
 
 				case 2:
 					cambiarMatricula(cochesnuevos, c);
+					
 					break;
 
 				case 3:
@@ -83,16 +81,22 @@ public class Main {
 				case 6:
 					listarCoches(cochesnuevos, c);
 					break;
+				case 7:
+					System.out.println("Saliendo..");
+					break;
 				default:
-
+					System.out.println("PCION INCORRECTA");
+					
 					break;
 				}
-			}
+			
 
 		} while (opcion != 7);
+		
 		System.out.println("FIN");
 
 		// TODO recorrer el array e guardarlo en coches.txt
+		
 
 	}
 
