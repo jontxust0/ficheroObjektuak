@@ -1,1 +1,2 @@
-29060pw;500 cv;Ferrari;4
+29060pw;8000cv;Ferrari;4
+2345pw;700cv;Nissan gt;4
