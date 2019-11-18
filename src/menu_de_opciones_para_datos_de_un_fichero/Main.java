@@ -59,15 +59,17 @@ public class Main {
 				switch (opcion) {
 				case 1:
 					aniadirCoche(cochesnuevos);
+					guardar(cochesnuevos);
 					break;
 
 				case 2:
 					cambiarMatricula(cochesnuevos, c);
-					
+					guardar(cochesnuevos);
 					break;
 
 				case 3:
 					cambiarMotor(cochesnuevos, c);
+					guardar(cochesnuevos);
 					break;
 
 				case 4:
@@ -132,27 +134,6 @@ public class Main {
 				System.out.println("Cual sera su nuevo numero de matricula?");
 				matriculaNueva = new Scanner(System.in).nextLine();
 				c.setMatricula(matriculaNueva);
-				File file = new File("datos/coches.txt");
-
-				i = cochesnuevos.iterator();
-
-				try {
-					// fitxategi baten idatzi ahal izateko behar diren objectuak
-					FileWriter fw;
-					fw = new FileWriter(file);
-					PrintWriter pw = new PrintWriter(fw);
-
-					while (i.hasNext()) {
-						c = i.next();
-						pw.println(c.getMatricula() + ";" + c.getPotencia() + ";" + c.getMarca() + ";" + c.getRuedas());
-
-					}
-					pw.close();
-					fw.close();
-
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
 			}
 		}
 
@@ -170,27 +151,6 @@ public class Main {
 				System.out.println("Que potencia le vas a dar?");
 				motorNuevo = new Scanner(System.in).nextLine();
 				c.setPotencia(motorNuevo);
-				File file = new File("datos/coches.txt");
-
-				i = cochesnuevos.iterator();
-
-				try {
-					// fitxategi baten idatzi ahal izateko behar diren objectuak
-					FileWriter fw;
-					fw = new FileWriter(file);
-					PrintWriter pw = new PrintWriter(fw);
-
-					while (i.hasNext()) {
-						c = i.next();
-						pw.println(c.getMatricula() + ";" + c.getPotencia() + ";" + c.getMarca() + ";" + c.getRuedas());
-
-					}
-					pw.close();
-					fw.close();
-
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
 			}
 		}
 
